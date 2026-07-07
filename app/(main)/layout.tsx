@@ -14,15 +14,15 @@ export default function MainLayout({
           <li>
             <Link
               href="/discover"
-              className="block px-4 py-3 rounded-lg hover:bg-[#343434]"
+              className="block px-4 py-3 rounded-lg bg-[#343434] hover:bg-[#232323] transition-colors duration-200"
             >
-              Discover Movies
+              Discover
             </Link>
           </li>
           <li>
             <Link
               href="/watchlist"
-              className="block px-4 py-3 rounded-lg hover:bg-[#343434]"
+              className="block px-4 py-3 rounded-lg bg-[#343434] hover:bg-[#232323] transition-colors duration-200"
             >
               Watch List
             </Link>
@@ -30,7 +30,7 @@ export default function MainLayout({
           <li>
             <Link
               href="/profile"
-              className="block px-4 py-3 rounded-lg hover:bg-[#343434]"
+              className="block px-4 py-3 rounded-lg bg-[#343434] hover:bg-[#232323] transition-colors duration-200"
             >
               Profile
             </Link>
@@ -38,8 +38,6 @@ export default function MainLayout({
         </ul>
       </aside>
 
-      {/* RIGHT SIDE: The Page Content */}
-      {/* flex-1 tells this side to take up all the remaining space. overflow-y-auto lets it scroll. */}
       <main className="flex-1 overflow-y-auto p-8 text-white">{children}</main>
     </div>
   );
