@@ -8,7 +8,9 @@ export default function MainLayout({
   return (
     <div className="flex h-screen bg-[#111111]">
       <aside className="w-64 border-r border-gray-800 p-4 text-white">
-        <h1 className="text-center text-xl font-bold mb-8">Watch Gallery</h1>
+        <h1 className="text-center text-xl font-bold mt-2 mb-4">
+          Watch Gallery
+        </h1>
 
         <ul className="space-y-4">
           <li>
