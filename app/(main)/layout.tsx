@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import NavLinks from "@/app/ui/NavLinks";
+import SearchBar from "../ui/SearchBar";
 
 export default function MainLayout({
   children,
@@ -17,20 +18,7 @@ export default function MainLayout({
             <NavLinks navLink="/watchlist" navTitle="Watchlist" />
             <NavLinks navLink="/discover" navTitle="Discover" />
           </div>
-          <div className="group flex items-center w-64 rounded-full bg-[#232323] px-4 h-10 text-white gap-2">
-            <Image
-              src="/icons8-search-50-2.svg"
-              alt="Search"
-              width={20}
-              height={20}
-              className="opacity-50 group-focus-within:hidden"
-            ></Image>
-            <input
-              type="text"
-              placeholder="Search..."
-              className="bg-transparent focus:outline-none w-full text-md placeholder-gray-500"
-            />
-          </div>
+          <SearchBar />
         </div>
       </header>
       <main className="flex-1 overflow-y-auto p-8 text-white">{children}</main>
