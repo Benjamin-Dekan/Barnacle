@@ -15,6 +15,7 @@ const MoviePage = ({ data }: { data: any }) => {
   const backdrops = data.images?.backdrops ?? [];
   const mediaTiles = backdrops.slice(0, 4);
 
+  const recommendations = data.recommendations?.results ?? [];
   //   const collectionName = data.belongs_to_collection?.name;
 
   return (
@@ -76,15 +77,18 @@ const MoviePage = ({ data }: { data: any }) => {
             ))}
           </div>
         </div> */}
+
         {/* Recommendation component of Movie Page */}
         <div className="px-12 py-10">
           <h2 className="text-2xl font-bold mb-6">Recommendations</h2>
           <div className="flex gap-4 overflow-x-auto pb-6">
-            {/* <MovieCard
-                  key={MovieCard.id}
-                  movie={movie}
-                  className="w-36 md:w-40 shrink-0"
-                /> */}
+            {recommendations.map((recommendation) => (
+              <MovieCard
+                key={recommendation.id}
+                movie={recommendation}
+                className="w-36 md:w-40 shrink-0"
+              />
+            ))}
           </div>
         </div>
       </div>
