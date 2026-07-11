@@ -26,7 +26,7 @@ const MoviePage = ({ data }: { data: any }) => {
     <main>
       <div className="flex flex-col">
         {/* Header */}
-        <div className="relative w-full min-h-[350px] overflow-hidden">
+        <div className="relative w-full min-h-[450px] overflow-hidden">
           <Image
             src={`https://image.tmdb.org/t/p/w1280${data.backdrop_path}`}
             alt={data.title}
@@ -37,7 +37,7 @@ const MoviePage = ({ data }: { data: any }) => {
           <BackArrow />
           <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#0A0A0A] to-transparent"></div>
 
-          <div className="w-[200px] h-[300px] absolute top-1/2 -translate-y-1/2 right-8 overflow-hidden rounded-xl shadow-2xl shrink-0 hidden md:block">
+          <div className="w-[200px] h-[300px] absolute top-1/2 -translate-y-1/2 right-8 overflow-hidden rounded-xl shadow-2xl shrink-0 hidden min-[935px]:block">
             <Image
               src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
               alt={data.title}
