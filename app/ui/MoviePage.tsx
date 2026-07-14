@@ -76,7 +76,7 @@ const MoviePage = ({ data }: { data: any }) => {
           {/* Cast */}
           <div>
             <h2 className="text-2xl font-bold mb-2 mt-4">Cast</h2>
-            <div className="flex gap-4 overflow-x-auto pb-6 scrollbar-track-background scrollbar-thumb-white pt-2">
+            <div className="flex gap-4 overflow-x-auto pb-14 scrollbar-track-background scrollbar-thumb-white pt-2 pl-10">
               {castTiles.map((actor) => (
                 <ActorCard key={actor.credit_id} actor={actor} />
               ))}
@@ -86,7 +86,7 @@ const MoviePage = ({ data }: { data: any }) => {
           {/* Media */}
           <div className="overflow-hidden">
             <h2 className="text-2xl font-bold mb-4">Media</h2>
-            <div className="grid grid-cols-3 gap-4 w-[1381px] mx-auto">
+            <div className="grid grid-cols-[repeat(3,max-content)] gap-y-4 gap-x-4 pl-10 justify-start">
               {mediaTiles.map((backdrop) => (
                 <div
                   key={backdrop.file_path}
@@ -106,7 +106,7 @@ const MoviePage = ({ data }: { data: any }) => {
           {/* Recommendation */}
           <div>
             <h2 className="text-2xl font-bold mb-2">Recommendations</h2>
-            <div className="flex gap-4 overflow-x-auto pb-6 scrollbar-track-background scrollbar-thumb-white mb-10 pt-2">
+            <div className="flex gap-4 overflow-x-auto pb-10 scrollbar-track-background scrollbar-thumb-white mb-10 pt-2 pl-10">
               {recommendations.map((recommendation) => (
                 <MovieCard
                   key={recommendation.id}
