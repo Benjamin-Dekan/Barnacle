@@ -1,10 +1,4 @@
-import MovieCard from "@/app/ui/MovieCard";
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-}
+import DiscoverGrid from "@/app/ui/MovieGrid";
 
 export default async function DiscoverPage({
   searchParams,
@@ -23,11 +17,8 @@ export default async function DiscoverPage({
   return (
     <main>
       <h1 className="text-5xl font-bold pb-8 text-center">Discover Movies</h1>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-        {data.results.map((movie: Movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
+
+      <DiscoverGrid data={data.results} />
     </main>
   );
 }
