@@ -5,15 +5,17 @@ import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import { useSearchParams } from "next/navigation";
 
 export type SearchProps = {
   onSearch: (value: string) => void;
 };
 
 const SearchBar = (props: SearchProps) => {
+  const searchParams = useSearchParams();
   const { onSearch } = props;
   const isOnDiscover = usePathname() === "/discover";
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(searchParams.get("q") ?? "");
 
   const debounceSearch = useDebouncedCallback((value: string) => {
     onSearch(value);
@@ -48,6 +50,7 @@ const SearchBar = (props: SearchProps) => {
         className="bg-transparent focus:outline-none w-full text-md placeholder-gray-500"
         onChange={searchHandler}
         onKeyDown={keyDownHandler}
+        defaultValue={value}
       />
     </div>
   );
