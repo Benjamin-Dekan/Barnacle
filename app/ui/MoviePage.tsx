@@ -50,7 +50,7 @@ const MoviePage = ({ data }: { data: any }) => {
             <div className="flex flex-col p-4">
               <div>
                 <h1 className="font-bold text-white text-6xl">{data.title}</h1>
-                <div className="flex gap-2 flex-wrap mt-1">
+                <div className="flex gap-2 flex-wrap mt-2">
                   {data.genres?.map((genre: { id: number; name: string }) => (
                     <span
                       key={genre.id}

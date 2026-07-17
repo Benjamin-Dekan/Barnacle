@@ -12,14 +12,14 @@ export type SearchProps = {
 const SearchBar = (props: SearchProps) => {
   const { onSearch } = props;
   const isOnDiscover = usePathname() === "/discover";
-  const [value, setValue] = useState("Enter search...");
+  const [value, setValue] = useState("");
 
   const searchHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const { target } = event;
     setValue(target.value);
 
     if (isOnDiscover) {
-      console.log(value);
+      onSearch(target.value);
     }
   };
 
