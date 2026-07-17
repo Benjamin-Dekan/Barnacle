@@ -6,9 +6,10 @@ import { useRouter } from "next/navigation";
 
 const Header = () => {
   const router = useRouter();
-
-  const tempFunc = (queryString: string) => {
-    router.push(`/discover?q=${queryString}`);
+  const searchRouter = (queryString: string) => {
+    if (queryString) {
+      router.push(`/discover?q=${queryString}`);
+    } else router.push(`/discover`);
   };
 
   return (
@@ -20,7 +21,7 @@ const Header = () => {
           <NavLinks navLink="/watchlist" navTitle="Watchlist" />
           <NavLinks navLink="/discover" navTitle="Discover" />
         </div>
-        <SearchBar onSearch={tempFunc} />
+        <SearchBar onSearch={searchRouter} />
       </div>
     </header>
   );
