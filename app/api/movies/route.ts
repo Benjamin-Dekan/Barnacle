@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
 
   const endpoint = query
     ? `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${query}&page=${page}`
-    : `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&page=${page}`;
+    : `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&page=${page}&sort_by=popularity.desc`;
 
   const response = await fetch(endpoint);
   const data = await response.json();

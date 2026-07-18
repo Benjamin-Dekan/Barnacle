@@ -17,8 +17,7 @@ export default async function DiscoverPage({
   return (
     <main>
       <h1 className="text-5xl font-bold pb-8 text-center">Discover Movies</h1>
-
-      <DiscoverGrid data={data.results} />
+      <DiscoverGrid data={data.results} query={query} key={query} />
     </main>
   );
 }

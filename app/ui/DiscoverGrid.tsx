@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import MovieCard from "./MovieCard";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 interface Movie {
   id: number;
@@ -9,17 +9,24 @@ interface Movie {
   poster_path: string;
 }
 
-const DiscoverGrid = ({ data }) => {
+const DiscoverGrid = ({ data, query }) => {
   const observerRef = useRef(null);
   const pageCounterRef = useRef(1);
+  const queryVal = query ?? "";
+  const [movies, setMovies] = useState(data);
 
-  const callback = (
+  const callback = async (
     entries: IntersectionObserverEntry[],
     observer: IntersectionObserver,
   ) => {
     if (entries[0].isIntersecting) {
-      console.log("Visible Test");
       pageCounterRef.current++;
+      const response = await fetch(
+        `/api/movies?q=${queryVal}&page=${pageCounterRef.current}`,
+      );
+      const result = await response.json();
+
+      setMovies((prev) => [...prev, ...result.results]);
     }
   };
 
@@ -44,7 +51,7 @@ const DiscoverGrid = ({ data }) => {
   return (
     <div>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-        {data.map((movie: Movie) => (
+        {movies.map((movie: Movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
