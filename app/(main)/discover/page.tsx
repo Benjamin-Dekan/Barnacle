@@ -1,4 +1,4 @@
-import DiscoverGrid from "@/app/ui/MovieGrid";
+import DiscoverGrid from "@/app/ui/DiscoverGrid";
 
 export default async function DiscoverPage({
   searchParams,

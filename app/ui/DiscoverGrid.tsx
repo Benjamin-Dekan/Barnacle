@@ -10,16 +10,18 @@ interface Movie {
 }
 
 const DiscoverGrid = ({ data }) => {
+  const observerRef = useRef(null);
+  const pageCounterRef = useRef(1);
+
   const callback = (
     entries: IntersectionObserverEntry[],
     observer: IntersectionObserver,
   ) => {
     if (entries[0].isIntersecting) {
       console.log("Visible Test");
+      pageCounterRef.current++;
     }
   };
-
-  const inputRef = useRef(null);
 
   useEffect(() => {
     const options = {
@@ -30,8 +32,8 @@ const DiscoverGrid = ({ data }) => {
     };
 
     const observer = new IntersectionObserver(callback, options);
-    if (inputRef.current) {
-      observer.observe(inputRef.current);
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
     }
 
     return () => {
@@ -46,7 +48,7 @@ const DiscoverGrid = ({ data }) => {
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
-      <div ref={inputRef}></div>
+      <div ref={observerRef}></div>
     </div>
   );
 };
