@@ -33,7 +33,7 @@ const DiscoverGrid = ({ data, query }) => {
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: "300px",
+      rootMargin: "500px",
       scrollMargin: "0px",
       threshold: 1.0,
     };
