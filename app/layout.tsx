@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Movie Gallery",
-  description: "Central Gallery for Movies",
+  title: "Barnacle",
+  description: "Central collection for movies",
 };
 
 export default function RootLayout({

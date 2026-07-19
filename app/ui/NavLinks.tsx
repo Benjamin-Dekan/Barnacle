@@ -11,7 +11,7 @@ const NavLinks = ({
   return (
     <Link
       href={navLink}
-      className="block px-4 py-3 rounded-lg bg-[#343434] hover:bg-[#232323] transition-colors duration-200"
+      className="px-4 py-3 rounded-lg bg-[#343434] hover:bg-[#232323] transition-colors duration-200 outline-2 outline-white/60"
     >
       {navTitle}
     </Link>
