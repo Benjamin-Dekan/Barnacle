@@ -22,6 +22,7 @@ const MovieCard = ({ movie, className = "w-full" }: MovieProps) => {
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
             fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
             className="object-cover"
           />
         </div>
