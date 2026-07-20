@@ -47,7 +47,7 @@ const SearchBar = (props: SearchProps) => {
       <input
         type="text"
         placeholder="Search..."
-        className="bg-transparent focus:outline-none w-full text-md placeholder-gray-500"
+        className="bg-transparent focus:outline-none w-full text-md text-white/50 mt-0.5"
         onChange={searchHandler}
         onKeyDown={keyDownHandler}
         defaultValue={value}
