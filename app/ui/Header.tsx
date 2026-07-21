@@ -18,7 +18,7 @@ const Header = () => {
     <header className="sticky z-50 top-0 w-full bg-[#111111]/80 border-b border-white/10 backdrop-blur-md">
       <div className="flex justify-between items-center h-19 px-8 relative">
         <div className="flex items-center gap-8">
-          <Link href="/discover" className="relative w-14 h-14">
+          <Link href="/discover" className="relative w-13 h-13">
             <Image src="/barnacle.svg" fill alt="Picture of barnacle logo" />
           </Link>
           <div className="text-3xl -ml-4 mr-134">Barnacle</div>
