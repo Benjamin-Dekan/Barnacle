@@ -3,13 +3,19 @@ import DiscoverGrid from "@/app/ui/DiscoverGrid";
 export default async function DiscoverPage({
   searchParams,
 }: {
-  searchParams: { q: string };
+  searchParams: { q: string; provider: string };
 }) {
   const params = await searchParams;
   const query = params.q;
-  const endpoint = query
-    ? `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${query}`
-    : `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}`;
+  const provider = params.provider;
+  let endpoint;
+  if (query && provider) {
+    endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${query}&provider=${provider}`;
+  } else if (query) {
+    endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${query}`;
+  } else {
+    endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}`;
+  }
 
   const response = await fetch(endpoint);
   const data = await response.json();
