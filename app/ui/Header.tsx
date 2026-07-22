@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import FilterBar from "./FilterBar";
 
 const Header = () => {
   const router = useRouter();
@@ -30,6 +31,7 @@ const Header = () => {
           <NavLinks navLink="/discover" navTitle="Discover" />
         </div>
 
+        <FilterBar />
         <SearchBar onSearch={searchRouter} />
       </div>
     </header>
