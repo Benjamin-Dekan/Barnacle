@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
 
 const PROVIDER_MAP = {
   Netflix: 8,
@@ -20,15 +19,39 @@ const FilterBar = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const currentParams = new URLSearchParams(searchParams.toString());
-  const watchProviders = 0;
-  const watchRegion = 0;
 
-  currentParams.set("provider", `${watchProviders}`);
-  currentParams.set("region", `${watchRegion}`);
+  const providerList = searchParams.get("provider")?.split(",") || [];
 
-  const [isChecked, setIsChecked] = useState(false);
+  // const watchRegion = searchParams.get("region") Ignore region for now, implement watch providers first
+  //   ? searchParams.getAll("region")
+  //   : "";
 
-  // router.push(`${pathname}?${currentParams.toString()}`);
+  const filterOnChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: number,
+  ) => {
+    const isChecked = e.target.checked;
+    const stringValue = value.toString();
+
+    let updatedProviders = [...providerList];
+
+    if (isChecked) {
+      if (!updatedProviders.includes(stringValue)) {
+        updatedProviders.push(stringValue);
+      }
+    } else {
+      updatedProviders = updatedProviders.filter((id) => id !== stringValue);
+    }
+
+    if (updatedProviders.length > 0) {
+      currentParams.set("provider", updatedProviders.join());
+    } else {
+      currentParams.delete("provider");
+    }
+
+    // currentParams.set("region", `${watchRegion}`);
+    router.push(`${pathname}?${currentParams.toString()}`);
+  };
 
   // Iterate and create checkbox for each provider in map
   return Object.entries(PROVIDER_MAP).map(([key, value]) => {
@@ -38,9 +61,9 @@ const FilterBar = () => {
           type="checkbox"
           name={`${key}`}
           id={`${key}`}
-          // value={value} do i need this? if so, why.
-          checked={isChecked}
-          onChange={(e) => setIsChecked(e.target.checked)}
+          value={value}
+          checked={providerList.includes(value.toString())}
+          onChange={(e) => filterOnChange(e, value)}
         />
         <label htmlFor={`${key}`} className="pl-1">
           {`${key}`}
