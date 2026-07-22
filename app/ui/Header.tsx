@@ -2,17 +2,23 @@
 import React from "react";
 import NavLinks from "./NavLinks";
 import SearchBar from "./SearchBar";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import FilterBar from "./FilterBar";
 
 const Header = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const currentParams = new URLSearchParams(searchParams);
+  const currentPathname = usePathname();
+
   const searchRouter = (queryString: string) => {
     if (queryString) {
-      router.push(`/discover?q=${queryString}`);
-    } else router.push(`/discover`);
+      currentParams.set("q", queryString);
+    } else currentParams.delete("q");
+
+    router.push(`${currentPathname}?${currentParams}`);
   };
 
   return (
