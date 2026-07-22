@@ -14,7 +14,7 @@ export default async function DiscoverPage({
   } else if (query) {
     endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${query}`;
   } else {
-    endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}`;
+    endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}`;
   }
 
   const response = await fetch(endpoint);
