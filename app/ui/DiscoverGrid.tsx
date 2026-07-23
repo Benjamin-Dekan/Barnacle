@@ -9,10 +9,11 @@ interface Movie {
   poster_path: string;
 }
 
-const DiscoverGrid = ({ data, query }) => {
+const DiscoverGrid = ({ data, query, provider }) => {
   const observerRef = useRef(null);
   const pageCounterRef = useRef(1);
   const queryVal = query ?? "";
+  const providerVal = provider ?? "";
   const [movies, setMovies] = useState(data);
 
   const callback = async (
@@ -22,7 +23,7 @@ const DiscoverGrid = ({ data, query }) => {
     if (entries[0].isIntersecting) {
       pageCounterRef.current++;
       const response = await fetch(
-        `/api/movies?q=${queryVal}&page=${pageCounterRef.current}`,
+        `/api/movies?q=${queryVal}&provider=${providerVal}&page=${pageCounterRef.current}`,
       );
       const result = await response.json();
 

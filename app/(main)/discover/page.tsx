@@ -10,8 +10,8 @@ export default async function DiscoverPage({
   const query = params.q;
   const provider = params.provider;
   let endpoint;
-  if (query && provider) {
-    endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${query}&provider=${provider}`;
+  if (provider) {
+    endpoint = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_watch_providers=${provider}&watch_region=US`;
   } else if (query) {
     endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${query}`;
   } else {
@@ -25,7 +25,12 @@ export default async function DiscoverPage({
     <main>
       <h1 className="text-5xl font-bold pb-8 text-center">Discover Movies</h1>
       <FilterBar />
-      <DiscoverGrid data={data.results} query={query} key={query} />
+      <DiscoverGrid
+        data={data.results}
+        query={query}
+        provider={provider}
+        key={`${query ?? ""}-${provider ?? ""}`}
+      />
     </main>
   );
 }
