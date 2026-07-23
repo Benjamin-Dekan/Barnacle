@@ -22,6 +22,8 @@ const MoviePage = ({ data }: { data: any }) => {
   const castList = data.credits?.cast ?? [];
   const castTiles = castList.slice(0, 10);
 
+  const runtimeHour = Math.floor(data.runtime / 60);
+  const runtimeMinutes = data.runtime % 60;
   return (
     <main>
       <div className="flex flex-col">
@@ -50,11 +52,28 @@ const MoviePage = ({ data }: { data: any }) => {
             <div className="flex flex-col p-4">
               <div>
                 <h1 className="font-bold text-white text-6xl">{data.title}</h1>
+                <div className="flex gap-2 flex-wrap mt-3 text-sm text-white/60 items-center">
+                  <span>
+                    {new Date(data.release_date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </span>
+                  {data.runtime > 0 && (
+                    <>
+                      <span className="w-1 h-1 rounded-full bg-white/30" />
+                      <span>
+                        {runtimeHour}h {runtimeMinutes}m
+                      </span>
+                    </>
+                  )}
+                </div>
                 <div className="flex gap-2 flex-wrap mt-2">
                   {data.genres?.map((genre: { id: number; name: string }) => (
                     <span
                       key={genre.id}
-                      className="bg-gray-700 px-2 py-1 rounded-full text-xs text-white"
+                      className="bg-white/10 ring-1 ring-white/10 px-2 py-1 rounded-full text-xs text-white"
                     >
                       {genre.name}
                     </span>
@@ -76,7 +95,7 @@ const MoviePage = ({ data }: { data: any }) => {
           {/* Cast */}
           <div>
             <h2 className="text-2xl font-bold mb-2 mt-4">Cast</h2>
-            <div className="flex gap-4 overflow-x-auto pb-14 scrollbar-track-background scrollbar-thumb-white pt-2 pl-10">
+            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-track-background scrollbar-thumb-white pt-2">
               {castTiles.map((actor) => (
                 <ActorCard key={actor.credit_id} actor={actor} />
               ))}
@@ -86,7 +105,7 @@ const MoviePage = ({ data }: { data: any }) => {
           {/* Media */}
           <div className="overflow-hidden">
             <h2 className="text-2xl font-bold mb-4">Media</h2>
-            <div className="grid grid-cols-[repeat(3,max-content)] gap-y-4 gap-x-4 pl-10 justify-start">
+            <div className="grid grid-cols-[repeat(3,max-content)] gap-y-4 gap-x-4 justify-start">
               {mediaTiles.map((backdrop) => (
                 <div
                   key={backdrop.file_path}
@@ -106,7 +125,7 @@ const MoviePage = ({ data }: { data: any }) => {
           {/* Recommendation */}
           <div>
             <h2 className="text-2xl font-bold mb-2">Recommendations</h2>
-            <div className="flex gap-4 overflow-x-auto pb-10 scrollbar-track-background scrollbar-thumb-white mb-10 pt-2 pl-10">
+            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-track-background scrollbar-thumb-white mb-10 pt-2">
               {recommendations.map((recommendation) => (
                 <MovieCard
                   key={recommendation.id}
