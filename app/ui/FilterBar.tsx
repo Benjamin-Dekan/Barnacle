@@ -7,7 +7,7 @@ const PROVIDER_MAP = {
   Netflix: 8,
   Amazon: 9,
   Disney: 337,
-  Max: 384,
+  Max: 1899,
   Apple: 350,
   Hulu: 15,
   Peacock: 386,
