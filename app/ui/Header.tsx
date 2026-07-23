@@ -37,7 +37,6 @@ const Header = () => {
           <NavLinks navLink="/discover" navTitle="Discover" />
         </div>
 
-        <FilterBar />
         <SearchBar onSearch={searchRouter} />
       </div>
     </header>

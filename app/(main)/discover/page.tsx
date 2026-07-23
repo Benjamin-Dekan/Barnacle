@@ -1,4 +1,5 @@
 import DiscoverGrid from "@/app/ui/DiscoverGrid";
+import FilterBar from "@/app/ui/FilterBar";
 
 export default async function DiscoverPage({
   searchParams,
@@ -23,6 +24,7 @@ export default async function DiscoverPage({
   return (
     <main>
       <h1 className="text-5xl font-bold pb-8 text-center">Discover Movies</h1>
+      <FilterBar />
       <DiscoverGrid data={data.results} query={query} key={query} />
     </main>
   );
