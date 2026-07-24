@@ -14,7 +14,7 @@ const SearchBar = (props: SearchProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { onSearch } = props;
-  const isOnDiscover = usePathname() === "/discover";
+  const isOnSearch = usePathname() === "/search";
   const [value, setValue] = useState(searchParams.get("q") ?? "");
 
   const debounceSearch = useDebouncedCallback((value: string) => {
@@ -25,15 +25,15 @@ const SearchBar = (props: SearchProps) => {
     const { target } = event;
     setValue(target.value);
 
-    if (isOnDiscover) {
+    if (isOnSearch) {
       debounceSearch(target.value);
     }
   };
 
   const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!isOnDiscover && event.key === "Enter") {
+    if (!isOnSearch && event.key === "Enter") {
       onSearch(value);
-      router.push(`/discover?q=${value}`);
+      router.push(`/search?q=${value}`);
     }
   };
   return (
