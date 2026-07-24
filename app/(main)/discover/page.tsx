@@ -22,15 +22,26 @@ export default async function DiscoverPage({
   const data = await response.json();
 
   return (
-    <main>
-      <h1 className="text-5xl font-bold pb-8 text-center">Discover Movies</h1>
-      <FilterBar />
-      <DiscoverGrid
-        data={data.results}
-        query={query}
-        provider={provider}
-        key={`${query ?? ""}-${provider ?? ""}`}
-      />
+    <main className="px-8 max-w-[1600px] mx-auto min-h-100">
+      <div className="flex gap-10 items-start">
+        <div className="flex flex-col shrink-0 gap-6 w-56 bg-[#1a1a1a] rounded-2xl px-4 py-4 ring-white/10 ring-1">
+          <div>
+            <h1 className="text-xl font-semibold">Discover</h1>
+            <p className="text-xs text-white/40 mt-1">Browse by provider</p>
+          </div>
+          <div className="h-px bg-white/10" />
+          <FilterBar />
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <DiscoverGrid
+            data={data.results}
+            query={query}
+            provider={provider}
+            key={`${query ?? ""}-${provider ?? ""}`}
+          />
+        </div>
+      </div>
     </main>
   );
 }
