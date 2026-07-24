@@ -51,7 +51,7 @@ const DiscoverGrid = ({ data, query, provider }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-12 gap-6">
         {movies.map((movie: Movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
