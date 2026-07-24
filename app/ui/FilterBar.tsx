@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 const PROVIDER_MAP = {
@@ -19,12 +19,9 @@ const FilterBar = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const currentParams = new URLSearchParams(searchParams.toString());
+  const [isOpen, setIsOpen] = useState(false);
 
   const providerList = searchParams.get("provider")?.split(",") || [];
-
-  // const watchRegion = searchParams.get("region") Ignore region for now, implement watch providers first
-  //   ? searchParams.getAll("region")
-  //   : "";
 
   const filterOnChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -32,7 +29,6 @@ const FilterBar = () => {
   ) => {
     const isChecked = e.target.checked;
     const stringValue = value.toString();
-
     let updatedProviders = [...providerList];
 
     if (isChecked) {
@@ -49,28 +45,42 @@ const FilterBar = () => {
       currentParams.delete("provider");
     }
 
-    // currentParams.set("region", `${watchRegion}`);
     router.push(`${pathname}?${currentParams.toString()}`);
   };
 
   // Iterate and create checkbox for each provider in map
-  return Object.entries(PROVIDER_MAP).map(([key, value]) => {
-    return (
-      <div key={`${key}`}>
-        <input
-          type="checkbox"
-          name={`${key}`}
-          id={`${key}`}
-          value={value}
-          checked={providerList.includes(value.toString())}
-          onChange={(e) => filterOnChange(e, value)}
-        />
-        <label htmlFor={`${key}`} className="pl-1">
-          {`${key}`}
-        </label>
-      </div>
-    );
-  });
+  return (
+    <div className="relative inline-block">
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#232323] hover:bg-[#343434] transition-colors mb-4"
+      >
+        Providers
+      </button>
+      {isOpen && (
+        <div className="absolute w-48 rounded-xl bg-[#232323] ring-1 ring-white/10 shadow-lg p-3 z-50">
+          {Object.entries(PROVIDER_MAP).map(([key, value]) => {
+            return (
+              <div key={`${key}`}>
+                <input
+                  type="checkbox"
+                  name={`${key}`}
+                  id={`${key}`}
+                  value={value}
+                  checked={providerList.includes(value.toString())}
+                  onChange={(e) => filterOnChange(e, value)}
+                />
+                <label htmlFor={`${key}`} className="pl-1">
+                  {`${key}`}
+                </label>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default FilterBar;
