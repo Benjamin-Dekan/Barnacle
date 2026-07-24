@@ -39,59 +39,66 @@ const MoviePage = ({ data }: { data: any }) => {
           <BackArrow />
           <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#0A0A0A] to-transparent"></div>
 
-          <div className="w-[200px] h-[300px] absolute top-1/2 -translate-y-1/2 right-8 overflow-hidden rounded-xl shadow-2xl shrink-0 hidden min-[935px]:block">
-            <Image
-              src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
-              alt={data.title}
-              fill
-              className="object-cover"
-            />
+          <div className="absolute inset-0 max-w-[1600px] mx-auto">
+            <div className="w-[200px] h-[300px] absolute top-1/2 -translate-y-1/2 right-14 overflow-hidden rounded-xl shadow-2xl shrink-0 hidden min-[935px]:block">
+              <Image
+                src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+                alt={data.title}
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
 
-          <header className="flex flex-col md:flex-row justify-between gap-6 p-4 pt-16">
-            <div className="flex flex-col p-4">
-              <div>
-                <h1 className="font-bold text-white text-6xl">{data.title}</h1>
-                <div className="flex gap-2 flex-wrap mt-3 text-sm text-white/60 items-center">
-                  <span>
-                    {new Date(data.release_date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </span>
-                  {data.runtime > 0 && (
-                    <>
-                      <span className="w-1 h-1 rounded-full bg-white/30" />
-                      <span>
-                        {runtimeHour}h {runtimeMinutes}m
-                      </span>
-                    </>
-                  )}
-                </div>
-                <div className="flex gap-2 flex-wrap mt-2">
-                  {data.genres?.map((genre: { id: number; name: string }) => (
-                    <span
-                      key={genre.id}
-                      className="bg-white/10 ring-1 ring-white/10 px-2 py-1 rounded-full text-xs text-white"
-                    >
-                      {genre.name}
+          <div className="max-w-[1600px] mx-auto">
+            <header className="flex flex-col md:flex-row justify-between gap-6 p-4 pt-16">
+              <div className="flex flex-col p-4">
+                <div>
+                  <h1 className="font-bold text-white text-6xl">
+                    {data.title}
+                  </h1>
+                  <div className="flex gap-2 flex-wrap mt-3 text-sm text-white/60 items-center">
+                    <span>
+                      {new Date(data.release_date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
                     </span>
-                  ))}
+                    {data.runtime > 0 && (
+                      <>
+                        <span className="w-1 h-1 rounded-full bg-white/30" />
+                        <span>
+                          {runtimeHour}h {runtimeMinutes}m
+                        </span>
+                      </>
+                    )}
+                  </div>
+                  <div className="flex gap-2 flex-wrap mt-2">
+                    {data.genres?.map((genre: { id: number; name: string }) => (
+                      <span
+                        key={genre.id}
+                        className="bg-white/10 ring-1 ring-white/10 px-2 py-1 rounded-full text-xs text-white"
+                      >
+                        {genre.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-white mt-8">
+                    Overview
+                  </h2>
+                  <p className="max-w-2xl text-white/90 line-clamp-6 mt-1.5">
+                    {data.overview}
+                  </p>
                 </div>
               </div>
-              <div>
-                <h2 className="text-xl font-bold text-white mt-8">Overview</h2>
-                <p className="max-w-2xl text-white/90 line-clamp-6 mt-1.5">
-                  {data.overview}
-                </p>
-              </div>
-            </div>
-          </header>
+            </header>
+          </div>
         </div>
 
-        {/* Shared wrapper: consistent left alignment + equal spacing between sections */}
-        <div className="flex flex-col px-12 space-y-8">
+        <div className="max-w-[1600px] mx-auto flex flex-col px-12 space-y-8">
           {/* Cast */}
           <div>
             <h2 className="text-2xl font-bold mb-2 mt-4">Cast</h2>
@@ -105,11 +112,11 @@ const MoviePage = ({ data }: { data: any }) => {
           {/* Media */}
           <div className="overflow-hidden">
             <h2 className="text-2xl font-bold mb-4">Media</h2>
-            <div className="grid grid-cols-[repeat(3,max-content)] gap-y-4 gap-x-4 justify-start">
+            <div className="grid grid-cols-[repeat(3,max-content)] gap-y-4 gap-x-4">
               {mediaTiles.map((backdrop) => (
                 <div
                   key={backdrop.file_path}
-                  className={`rounded-xl relative overflow-hidden h-64 aspect-video px-2`}
+                  className={`rounded-xl relative overflow-hidden h-69 aspect-video px-2`}
                 >
                   <Image
                     src={`https://image.tmdb.org/t/p/w500${backdrop.file_path}`}

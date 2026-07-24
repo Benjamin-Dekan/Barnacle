@@ -8,7 +8,7 @@ export default function MainLayout({
   return (
     <div className="min-h-screen bg-[#111111]">
       <Header />
-      <main className="flex-1 overflow-y-auto pt-8 pr-8 pb-8 pl-4 text-white">
+      <main className="flex-1 overflow-y-auto pt-8 pr-8 pb-8 pl-8 text-white">
         {children}
       </main>
     </div>
