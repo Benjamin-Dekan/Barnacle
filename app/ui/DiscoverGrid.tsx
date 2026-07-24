@@ -9,17 +9,20 @@ interface Movie {
   poster_path: string;
 }
 
-const DiscoverGrid = ({ data, query, provider }) => {
+interface DiscoverGridProps {
+  data: Movie[];
+  query?: string;
+  provider?: string;
+}
+
+const DiscoverGrid = ({ data, query, provider }: DiscoverGridProps) => {
   const observerRef = useRef(null);
   const pageCounterRef = useRef(1);
   const queryVal = query ?? "";
   const providerVal = provider ?? "";
   const [movies, setMovies] = useState(data);
 
-  const callback = async (
-    entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver,
-  ) => {
+  const callback = async (entries: IntersectionObserverEntry[]) => {
     if (entries[0].isIntersecting) {
       pageCounterRef.current++;
       const response = await fetch(
@@ -47,11 +50,11 @@ const DiscoverGrid = ({ data, query, provider }) => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  });
 
   return (
     <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
         {movies.map((movie: Movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
