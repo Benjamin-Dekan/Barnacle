@@ -16,8 +16,8 @@ export default async function SearchPage({
   }
 
   return (
-    <main className="px-8 max-w-[1600px] mx-auto min-h-100">
-      <div className="flex gap-10 items-start">
+    <main className="max-w-[1600px] mx-auto min-h-100">
+      <div className="flex gap-8 items-start">
         {query ? (
           <div className="flex-1 min-w-0">
             <DiscoverGrid
