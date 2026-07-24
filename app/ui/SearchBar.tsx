@@ -3,9 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import { useSearchParams } from "next/navigation";
 
 export type SearchProps = {
   onSearch: (value: string) => void;
@@ -13,6 +12,7 @@ export type SearchProps = {
 
 const SearchBar = (props: SearchProps) => {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const { onSearch } = props;
   const isOnDiscover = usePathname() === "/discover";
   const [value, setValue] = useState(searchParams.get("q") ?? "");
@@ -33,6 +33,7 @@ const SearchBar = (props: SearchProps) => {
   const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (!isOnDiscover && event.key === "Enter") {
       onSearch(value);
+      router.push(`/discover?q=${value}`);
     }
   };
   return (
