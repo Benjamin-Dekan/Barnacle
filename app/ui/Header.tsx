@@ -5,7 +5,6 @@ import SearchBar from "./SearchBar";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import FilterBar from "./FilterBar";
 
 const Header = () => {
   const router = useRouter();
