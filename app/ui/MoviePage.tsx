@@ -61,7 +61,7 @@ const MoviePage = ({ data }: { data: MovieData }) => {
           <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#0A0A0A] to-transparent"></div>
 
           <div className="absolute inset-0 max-w-[1600px] mx-auto">
-            <div className="w-50 h-75 absolute top-1/2 -translate-y-1/2 right-14 overflow-hidden rounded-xl shadow-2xl shrink-0 hidden min-[935px]:block">
+            <div className="w-50 h-75 absolute top-1/2 -translate-y-1/2 right-14 overflow-hidden rounded-xl shadow-2xl shrink-0 hidden min-[1200px]:block">
               <Image
                 src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                 alt={data.title}
