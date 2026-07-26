@@ -3,6 +3,7 @@ import MovieCard from "@/app/ui/MovieCard";
 import Image from "next/image";
 import ActorCard from "./ActorCard";
 import BackArrow from "./BackArrow";
+import HomeButton from "./HomeButton";
 
 interface Movie {
   id: number;
@@ -57,7 +58,10 @@ const MoviePage = ({ data }: { data: MovieData }) => {
             priority
             className="object-cover brightness-[0.3] -z-10"
           />
-          <BackArrow />
+          <div className="absolute top-4 left-4 z-30 flex gap-2">
+            <BackArrow />
+            <HomeButton />
+          </div>
           <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#0A0A0A] to-transparent"></div>
 
           <div className="absolute inset-0 max-w-[1600px] mx-auto">
