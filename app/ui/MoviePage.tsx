@@ -4,6 +4,7 @@ import Image from "next/image";
 import ActorCard from "./ActorCard";
 import BackArrow from "./BackArrow";
 import HomeButton from "./HomeButton";
+import WatchProvider from "./WatchProvider";
 
 interface Movie {
   id: number;
@@ -23,6 +24,18 @@ interface Backdrop {
   file_path: string;
 }
 
+interface providerInfo {
+  logo_path: string;
+  provider_name: string;
+}
+
+interface providerObject {
+  link: string;
+  flatrate: providerInfo[];
+  // rent?: providerInfo[];
+  // buy?: providerInfo[];
+}
+
 interface MovieData {
   title: string;
   backdrop_path: string;
@@ -34,6 +47,7 @@ interface MovieData {
   images?: { backdrops: Backdrop[] };
   recommendations?: { results: Movie[] };
   credits?: { cast: ActorInfo[] };
+  "watch/providers"?: { results: Record<string, providerObject> };
 }
 
 const MoviePage = ({ data }: { data: MovieData }) => {
@@ -46,6 +60,10 @@ const MoviePage = ({ data }: { data: MovieData }) => {
 
   const runtimeHour = Math.floor(data.runtime / 60);
   const runtimeMinutes = data.runtime % 60;
+
+  const providerLink = data["watch/providers"]?.results?.US?.link ?? undefined;
+  const flatrateProviders = data["watch/providers"]?.results?.US?.flatrate;
+
   return (
     <main>
       <div className="flex flex-col">
@@ -62,7 +80,7 @@ const MoviePage = ({ data }: { data: MovieData }) => {
             <BackArrow />
             <HomeButton />
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#0A0A0A] to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#0A0A0A] to-transparent pointer-events-none"></div>
 
           <div className="absolute inset-0 max-w-[1600px] mx-auto">
             <div className="w-50 h-75 absolute top-1/2 -translate-y-1/2 right-14 overflow-hidden rounded-xl shadow-2xl shrink-0 hidden min-[1200px]:block">
@@ -75,13 +93,14 @@ const MoviePage = ({ data }: { data: MovieData }) => {
             </div>
           </div>
 
-          <div className="max-w-[1600px] mx-auto">
+          <div className="max-w-[1600px] mx-auto relative z-10 px-4">
             <header className="flex flex-col md:flex-row justify-between gap-6 p-4 pt-16">
               <div className="flex flex-col p-4">
                 <div>
                   <h1 className="font-bold text-white text-6xl">
                     {data.title}
                   </h1>
+
                   <div className="flex gap-2 flex-wrap mt-3 text-sm text-white/60 items-center">
                     <span>
                       {new Date(data.release_date).toLocaleDateString("en-US", {
@@ -99,6 +118,7 @@ const MoviePage = ({ data }: { data: MovieData }) => {
                       </>
                     )}
                   </div>
+
                   <div className="flex gap-2 flex-wrap mt-2">
                     {data.genres?.map((genre: { id: number; name: string }) => (
                       <span
@@ -110,6 +130,7 @@ const MoviePage = ({ data }: { data: MovieData }) => {
                     ))}
                   </div>
                 </div>
+
                 <div>
                   <h2 className="text-xl font-bold text-white mt-8">
                     Overview
@@ -117,6 +138,29 @@ const MoviePage = ({ data }: { data: MovieData }) => {
                   <p className="max-w-2xl text-white/90 line-clamp-6 mt-1.5">
                     {data.overview}
                   </p>
+                </div>
+
+                {/* Watch Providers*/}
+                <div className="flex flex-row py-5 items-center gap-2">
+                  {flatrateProviders?.length && providerLink && (
+                    <>
+                      <a
+                        href={providerLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-md overflow-hidden shrink-0"
+                      >
+                        <div className="shrink-0 px-6 py-2 rounded-xl bg-[#e8e2d0] text-[#4a3728] text-lg cursor-pointer transition-colors hover:bg-[#c4b078] border-2 border-[#807149] font-semibold">
+                          Stream:
+                        </div>
+                      </a>
+                      <div className="shrink-0 overflow-hidden">
+                        <WatchProvider
+                          providerData={data["watch/providers"]?.results?.US}
+                        />
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </header>
