@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <main>
       {/* Navigation Bar */}
-      <header className="p-6">
-        <div className="flex items-center justify-between max-w-[1600px] mx-auto">
+      <header className="p-6 max-w-[1600px] mx-auto">
+        <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image
               src="/barnacle.svg"
@@ -27,9 +27,18 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section></section>
+      <section>
+        <div className="px-6 max-w-[1600px] mx-auto flex flex-col items-start gap-2">
+          <h2 className="font-bold text-6xl">A place for movies to wash up.</h2>
+          <h3 className="">
+            Search any movie, filter by streaming service, and keep a list of
+            what's worth watching.
+          </h3>
+          <Link href="/discover">Dive Deep</Link>
+        </div>
+      </section>
 
-      {/* Hero */}
+      {/* Features */}
       <section></section>
 
       {/* Footer */}
