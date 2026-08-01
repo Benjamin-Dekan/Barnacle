@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 interface providerInfo {
   logo_path: string;
@@ -10,8 +9,6 @@ interface providerInfo {
 interface providerObject {
   link: string;
   flatrate: providerInfo[];
-  // rent?: providerInfo[];
-  // buy?: providerInfo[];
 }
 
 const WatchProvider = ({
@@ -35,20 +32,6 @@ const WatchProvider = ({
       ))}
     </div>
   );
-
-  // {mediaTiles.map((backdrop) => (
-  //                 <div
-  //                   key={backdrop.file_path}
-  //                   classprovider_name={`rounded-xl relative overflow-hidden h-69 aspect-video px-2`}
-  //                 >
-  //                   <Image
-  //                     src={`https://image.tmdb.org/t/p/w500${backdrop.file_path}`}
-  //                     alt={providerData.title}
-  //                     fill
-  //                     classprovider_name="object-cover"
-  //                   />
-  //                 </div>
-  //               ))}
 };
 
 export default WatchProvider;

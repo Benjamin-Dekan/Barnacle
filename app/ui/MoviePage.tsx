@@ -32,8 +32,6 @@ interface providerInfo {
 interface providerObject {
   link: string;
   flatrate: providerInfo[];
-  // rent?: providerInfo[];
-  // buy?: providerInfo[];
 }
 
 interface MovieData {
