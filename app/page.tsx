@@ -1,7 +1,17 @@
 export default function Home() {
   return (
-    <div>
-      <ul>hi</ul>
-    </div>
+    <main>
+      {/* Navigation Bar */}
+      <header></header>
+
+      {/* Hero */}
+      <section></section>
+
+      {/* Features */}
+      <section></section>
+
+      {/* Footer */}
+      <footer></footer>
+    </main>
   );
 }
