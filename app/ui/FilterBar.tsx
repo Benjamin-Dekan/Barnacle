@@ -54,12 +54,12 @@ const FilterBar = () => {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#232323] hover:bg-[#343434] transition-colors mb-4"
+        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#004B5C] hover:bg-[#A2E0F1]/40 transition-colors mb-4"
       >
         Providers
       </button>
       {isOpen && (
-        <div className="absolute w-48 rounded-xl bg-[#232323] ring-1 ring-white/10 shadow-lg p-3 z-50">
+        <div className="absolute w-48 rounded-xl bg-[#06262E] ring-1 ring-white/10 shadow-lg p-3 z-50">
           {Object.entries(PROVIDER_MAP).map(([key, value]) => {
             return (
               <div key={`${key}`}>

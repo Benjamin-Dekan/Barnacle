@@ -15,7 +15,7 @@ const ActorCard = ({ actor }: { actor: ActorInfo }) => {
       href={`https://www.themoviedb.org/person/${actor.id}`}
       className={`block w-36 md:w-40 shrink-0`}
     >
-      <div className="relative ml-1 aspect-2/3 ring-1 ring-white/10 rounded-xl shadow-md overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#7a7a7a]/30">
+      <div className="relative ml-1 aspect-2/3 ring-1 ring-white/10 rounded-xl shadow-md overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#004B5C]">
         <Image
           src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
           alt={actor.name}

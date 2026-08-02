@@ -63,7 +63,7 @@ const MoviePage = ({ data }: { data: MovieData }) => {
   const flatrateProviders = data["watch/providers"]?.results?.US?.flatrate;
 
   return (
-    <main>
+    <main className="bg-[#08171A] z-1">
       <div className="flex flex-col">
         {/* Header */}
         <div className="relative w-full min-h-112.5 overflow-hidden">
@@ -78,7 +78,7 @@ const MoviePage = ({ data }: { data: MovieData }) => {
             <BackArrow />
             <HomeButton />
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#0A0A0A] to-transparent pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#08171A] to-transparent pointer-events-none"></div>
 
           <div className="absolute inset-0 max-w-[1600px] mx-auto">
             <div className="w-50 h-75 absolute top-1/2 -translate-y-1/2 right-14 overflow-hidden rounded-xl shadow-2xl shrink-0 hidden min-[1200px]:block">
@@ -91,7 +91,7 @@ const MoviePage = ({ data }: { data: MovieData }) => {
             </div>
           </div>
 
-          <div className="max-w-[1600px] mx-auto relative z-10 px-4">
+          <div className="max-w-[1600px] mx-auto relative z-10 px-4 isolate">
             <header className="flex flex-col md:flex-row justify-between gap-6 p-4 pt-16">
               <div className="flex flex-col p-4">
                 <div>
@@ -148,7 +148,7 @@ const MoviePage = ({ data }: { data: MovieData }) => {
                         rel="noopener noreferrer"
                         className="rounded-md overflow-hidden shrink-0"
                       >
-                        <div className="shrink-0 px-6 py-2 rounded-xl bg-[#e8e2d0] text-[#4a3728] text-lg cursor-pointer transition-colors hover:bg-[#c4b078] border-2 border-[#807149] font-semibold">
+                        <div className="shrink-0 px-6 py-2 rounded-xl bg-[#004B5C] text-[#A2E0F1] text-lg cursor-pointer transition-colors border-2 hover:bg-[#06262E] border-[#08171A] font-semibold">
                           Stream:
                         </div>
                       </a>

@@ -16,10 +16,11 @@ const NavLinks = ({
     <Link
       href={navLink}
       className={clsx(
-        "px-4 py-2 rounded-full bg-[#232323] hover:bg-[#343434] transition-colors duration-200",
+        "px-4 py-2 rounded-full  transition-colors duration-200",
         {
-          "bg-[#343434]": isCurrentPath,
-          "text-xs text-white/50": !isCurrentPath,
+          "bg-[#004B5C]": isCurrentPath,
+          "text-xs text-white/50 bg-[#08171A] hover:bg-[#A2E0F1]/40":
+            !isCurrentPath,
         },
       )}
     >
