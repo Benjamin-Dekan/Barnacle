@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 
 export default function Home() {
   return (
-    <main>
+    <main className="min-h-screen flex flex-col">
       {/* Navigation Bar */}
       <header className="p-6 max-w-[1600px] mx-auto">
         <div className="flex items-center justify-between">
