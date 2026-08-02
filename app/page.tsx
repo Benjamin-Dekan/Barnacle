@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-screen flex flex-col bg-[#004B5C]/20">
       {/* Navigation Bar */}
       <div>
         <header className="p-6 max-w-[1600px] mx-auto">
@@ -66,7 +66,7 @@ export default function Home() {
       {/* Features */}
       <section>
         <div className="px-8 py-6 gap-3 max-w-[1600px] mx-auto flex flex-col items-stretch sm:flex-row justify-between text-center">
-          <div className="flex-1 rounded-xl py-2 px-4 ring-1 ring-[#A2E0F1] bg-[#004B5C]/20 hover:bg-[#004B5C]/20">
+          <div className="flex-1 rounded-xl py-2 px-4 ring-1 ring-[#A2E0F1] bg-[#004B5C]/50 ">
             <Compass className="w-6 h-6 mx-auto text-[#A2E0F1]" />
             <h4 className="text-2xl font-semibold">Discover</h4>
             <p className="text-lg text-[#A2E0F1]/80 tracking-wide">
@@ -75,7 +75,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex-1 rounded-xl py-2 px-4 ring-1 ring-[#A2E0F1] bg-[#004B5C]/20">
+          <div className="flex-1 rounded-xl py-2 px-4 ring-1 ring-[#A2E0F1] bg-[#004B5C]/50">
             <SlidersHorizontal className="w-6 h-6 mx-auto text-[#A2E0F1]" />
             <h4 className="text-2xl font-semibold">Filter</h4>
             <p className="text-lg text-[#A2E0F1]/80 tracking-wide">
@@ -84,7 +84,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex-1 rounded-xl py-2 px-4 ring-1 ring-[#A2E0F1] bg-[#004B5C]/20">
+          <div className="flex-1 rounded-xl py-2 px-4 ring-1 ring-[#A2E0F1] bg-[#004B5C]/50">
             <Search className="w-6 h-6 mx-auto text-[#A2E0F1]" />
             <h4 className="text-2xl font-semibold">Search</h4>
             <p className="text-lg text-[#A2E0F1]/80 tracking-wide">
