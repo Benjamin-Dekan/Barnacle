@@ -22,7 +22,7 @@ export default async function DiscoverPage({
   const data = await response.json();
 
   return (
-    <main className="max-w-[1600px] mx-auto min-h-100">
+    <main className="min-h-100">
       <div className="flex gap-8 items-start">
         <div className="flex flex-col shrink-0 gap-6 w-56 bg-[#06262E] rounded-2xl px-4 py-4 ring-white/10 ring-1">
           <div>
