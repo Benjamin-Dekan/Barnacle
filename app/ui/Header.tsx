@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <header className="sticky z-50 top-0 w-full bg-[#004B5C]/30 border-b border-white/10 backdrop-blur-md">
-      <div className="flex items-center h-19 px-8">
+      <div className="flex items-center h-19 px-8 gap-2">
         <div className="flex-1 flex items-center gap-3">
           <Link href="/discover" className="relative w-13 h-13 shrink-0">
             <Image src="/barnacle.svg" fill alt="Picture of barnacle logo" />
