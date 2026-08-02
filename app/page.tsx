@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Cormorant, Playfair_Display } from "next/font/google";
+import { Compass, SlidersHorizontal, Search } from "lucide-react";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -61,7 +62,40 @@ export default function Home() {
       </section>
 
       {/* Features */}
-      <section></section>
+      <section>
+        <div className="px-8 py-6 gap-3 max-w-[1600px] mx-auto flex flex-col items-stretch sm:flex-row justify-between text-center">
+          <div className="flex-1 rounded-xl py-2 px-4 ring-1 ring-[#A2E0F1] bg-[#004B5C]/20 hover:bg-[#004B5C]/20">
+            <Compass className="w-6 h-6 mx-auto text-[#A2E0F1]" />
+            <h4 className="text-2xl font-semibold">Discover</h4>
+            <p className="text-lg text-[#A2E0F1]/80 tracking-wide">
+              Explore the top movies today. Browse trending titles, critically
+              acclaimed classics, and hidden gems you might have missed.
+            </p>
+          </div>
+
+          <div className="flex-1 rounded-xl py-2 px-4 ring-1 ring-[#A2E0F1] bg-[#004B5C]/20">
+            <SlidersHorizontal className="w-6 h-6 mx-auto text-[#A2E0F1]" />
+            <h4 className="text-2xl font-semibold">Filter</h4>
+            <p className="text-lg text-[#A2E0F1]/80 tracking-wide">
+              Stop checking five apps to find out where a movie is streaming.
+              Narrow results to the services you already pay for.
+            </p>
+          </div>
+
+          <div className="flex-1 rounded-xl py-2 px-4 ring-1 ring-[#A2E0F1] bg-[#004B5C]/20">
+            <Search className="w-6 h-6 mx-auto text-[#A2E0F1]" />
+            <h4 className="text-2xl font-semibold">Search</h4>
+            <p className="text-lg text-[#A2E0F1]/80 tracking-wide">
+              Search by title, no matter how well you remember it. Whether you
+              know the exact name or you&apos;re just chasing a half-remembered
+              title, find it fast.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Pushes wave effect to bottom of visible screen*/}
+      <div className="flex-1"></div>
 
       {/* Footer */}
       <footer>
