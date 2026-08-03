@@ -1,10 +1,8 @@
 "use client";
-import React from "react";
 import NavLinks from "./NavLinks";
 import SearchBar from "./SearchBar";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 
 import { Cormorant } from "next/font/google";
 

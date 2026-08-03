@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import MovieCard from "./MovieCard";
 import { useRef, useEffect, useState } from "react";
 

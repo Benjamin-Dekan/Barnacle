@@ -1,5 +1,4 @@
 import MoviePage from "@/app/ui/MoviePage";
-import React from "react";
 
 export default async function MovieLandingPage({
   params,
