@@ -6,6 +6,14 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Cormorant } from "next/font/google";
+
+const cormorant = Cormorant({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
+
 const Header = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -21,13 +29,18 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky z-50 top-0 w-full bg-[#004B5C]/30 border-b border-white/10 backdrop-blur-md">
-      <div className="flex items-center h-19 px-8 gap-2">
-        <div className="flex-1 flex items-center gap-3">
-          <Link href="/discover" className="relative w-13 h-13 shrink-0">
-            <Image src="/barnacle.svg" fill alt="Picture of barnacle logo" />
-          </Link>
-          <div className="text-3xl">Barnacle</div>
+    <header className="sticky z-50 top-0 w-full bg-[#004B5C]/30 border-b border-white/10 backdrop-blur-md px-6 pt-4 pb-2">
+      <div className="flex items-center gap-2">
+        <div className="flex flex-1 items-center gap-3">
+          <Image
+            src="/barnacle.svg"
+            width={52}
+            height={52}
+            alt="Picture of barnacle logo"
+          />
+          <h1 className={` ${cormorant.className} font-medium text-3xl`}>
+            Barnacle
+          </h1>
         </div>
 
         <div className="flex-1 hidden lg:flex items-center justify-center gap-8 min-w-0">
